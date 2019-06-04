@@ -11,10 +11,10 @@ from .models import Posts, Profile, Status
 # Create your views here.
 def home(request):
     current_user = request.user
-    # projects = Projects.get_projects()
+    posts = Posts.get_posts()
     title = "Wedlist Forums"
 
-    return render(request,'all/home.html', {"title":title,})
+    return render(request,'all/home.html', {"title":title, "posts":posts})
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):

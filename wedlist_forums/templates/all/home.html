@@ -3,6 +3,42 @@
 {% block content %}
     {{block.super}}
 
-    <h1 style="margin-top:7%">Welcome to the Wedlist Forums!</h1>
+    <div class="container">
+        <div class="jumbotron"style="margin-top:100px">
+        <h2 class="newdata">Post your posts here ad have previous brides help you to come up with a solution!</h2>
+        <h4 style="text-align:center; font-style:italic">Don't forget to help other engaged brides solve their issues!</h4>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12" >
+        {% for project in posts%}
+        
+            <div class="col-md-4" style="padding:1%">
+                <div class="card">
+               
+                <div style="margin:2%">
+                    <br>
+                    <p> <strong>{{project.title}} </strong></p>
+                    <hr>
+                    <p style="float:right">{{project.date}}</p>
+                    
+        
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                {% autoescape on %}
+                {{project.post| safe}}
+                {% endautoescape %}
+            </div>
+            {% empty %}
+            <div class="row">
+                <h2 class="text-center">There is no Project yet!</h2>
+            </div>
+        {% endfor %}
+        </div>   
+    </div>
+
+</div>
 
 {% endblock %}
