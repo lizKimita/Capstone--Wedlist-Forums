@@ -41,6 +41,7 @@ LOGIN_REDIRECT_URL = "/"
 
 INSTALLED_APPS = [
     'wedlist_forums',
+    'tinymce',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
