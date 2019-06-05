@@ -86,6 +86,42 @@ class Solutions(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     solution=models.TextField(max_length=150)
     post_id=models.IntegerField(default=0)
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.solution
+
+class Tips(models.Model):
+    title = models.CharField(max_length = 30)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    tips=models.TextField(max_length=150)
+    tipper_id = models.IntegerField(default=0)
+    date = models.DateField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.tips
+
+    def save_tip(self):
+        self.save()
+
+    def delete_tip(self):
+        Tips.objects.filter().delete()
+    
+    @classmethod
+    def get_tips(cls):
+        tips = Tips.objects.all()
+        return tips
+
+    @classmethod
+    def get_tip(cls, tip_id):
+        single_tip = cls.objects.get(id=tip_id)
+        return single_tip
+
+    @classmethod
+    def search_by_title(cls,search_term):
+        tip = cls.objects.filter(title__icontains=search_term)
+        return tip
+
+    class Meta:
+        ordering = ['-id']

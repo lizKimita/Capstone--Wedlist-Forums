@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from rest_framework.response import Response
-from .forms import NewPostForm, NewProfileForm, NewSolutionsForm
-from .models import Posts, Profile, Status, Solutions
+from .forms import NewPostForm, NewProfileForm, NewSolutionsForm, NewTipsForm
+from .models import Posts, Profile, Status, Solutions,Tips
 
 
 # Create your views here.
@@ -63,13 +63,15 @@ def edit_profile(request):
 def profile(request):
     current_user = request.user
     posts = Posts.objects.filter(profile = current_user)
+    tips = Tips.objects.filter(user = current_user)
 
     try:
         profile = Profile.objects.get(user=current_user)
+        user = Profile.objects.get(user=current_user)
     except ObjectDoesNotExist:
         return redirect('new_profile')
 
-    return render(request,'profile.html',{ 'profile':profile,'posts':posts,'current_user':current_user})
+    return render(request,'profile.html',{ 'profile':profile,'posts':posts,'tips':tips,'current_user':current_user})
 
 def search_results(request):
     if 'post' in request.GET and request.GET ["post"]:
@@ -103,3 +105,23 @@ def solution(request,id):
         raise Http404()
    
     return render(request, 'all/solution.html',{'post':post, 'current_user': current_user,  'form':form, 'solutions':user_solution})
+
+
+def tips(request):
+    tips = Tips.get_tips()
+    current_user = request.user
+
+    if request.method == 'POST':
+        form = NewTipsForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = current_user
+            form.tipper_id = current_user.id
+            form.save()
+        return redirect('tips')
+
+    else:
+        form = NewTipsForm()
+
+    return render(request, 'all/tips.html', {"form": form, "tips":tips})
+

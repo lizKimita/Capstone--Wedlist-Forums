@@ -28,30 +28,42 @@
         {% endif %}
     </div>
 
-    <div class="container" style="margin-top:120px" >
+    <div class="container" style="margin-top:10px" >
 
     <div class="card-body">
         <div class="row">
-            {% for project in projects %}
+            {% for post in posts %}
             <div class="col-md-4" style="padding:1%">
               <div class="card">
-                <img src="{{project.project_image.url}}" class="img-responsive" alt="" style="width:700px;height:300px;">
-                <br>
+                <p>{{post.title}}</p>
                 <hr>
                 <div style="margin:3%">
-                  <p style="float:right">{{project.date}}</p>
-                  <p><strong>{{project.title}}</strong></p>
+                <p>{{post.description}}</p>
+                <p style="float:right">{{post.date}}</p>
                 </div>
-                
               </div>
             </div>
-            
-
             {% endfor%}
+            {% for tip in tips %}
+                {% if tips %}
+            <div class="col-md-4" style="padding:1%">
+              <div class="card">
+                <p>{{tip.title}}</p>
+                <hr>
+                <div style="margin:3%">
+                <p>{{tip.tips}}</p>
+                <p style="float:right">{{tip.date}}</p>
+                </div>
+              </div>
             </div>
+            {% else %}
+                <p>You haven't offered any tips yet!</p>
+                {% endif %}
+            {% endfor%}
+        </div>
     </div>
           
-      </div>
+    </div>
 </div>
 
 {% endblock %}

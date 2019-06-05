@@ -4,7 +4,7 @@
     <a class="navbar-brand" href="/"><img src="https://weddingstorieskenya.com/wp-content/uploads/2018/10/logo-2-e1540489991521.png" alt="" style="height:250%; margin-top: -40%"></a> 
     <a class="navbar-brand headstyle" style="color:white;font-size: 200%" href="/">Wedlist Forums</a>
     {% if user.is_authenticated %}
-    <a class="navbar-brand" style="color:white" href="/"></i>Tips/Advice</a>
+    <a class="navbar-brand" style="color:white" href="{% url 'tips' %}"></i>Tips/Advice</a>
     {% endif %}
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 150px">
         {% if user.is_authenticated %}

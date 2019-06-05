@@ -1,4 +1,4 @@
-from .models import Status,Profile,Posts, Solutions
+from .models import Status,Profile,Posts, Solutions,Tips
 from django import forms
 
 class NewPostForm(forms.ModelForm):
@@ -16,3 +16,8 @@ class NewSolutionsForm(forms.ModelForm):
     class Meta:
         model = Solutions
         exclude = ['post_id', 'user']
+    
+class NewTipsForm(forms.ModelForm):
+    class Meta:
+        model = Tips
+        exclude = ['user', 'date', 'tipper_id']

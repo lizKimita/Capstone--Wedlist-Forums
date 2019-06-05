@@ -11,7 +11,7 @@ urlpatterns=[
     url(r'^edit_profile/$',views.edit_profile,name = 'edit_profile'),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^solution/(\d+)/', views.solution, name = 'solution'),
-    
+    url(r'^tips/',views.tips, name = 'tips'),
 ]
 
 
