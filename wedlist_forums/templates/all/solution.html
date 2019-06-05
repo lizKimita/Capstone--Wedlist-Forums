@@ -3,47 +3,75 @@
 
 {% block content %}
 {%for projo in post%}
-
-<div class="container" style="margin-top:10%">
-    <div class="">
-        <p class="">{{projo.title}}</p>
-        <p class="">{{projo.description}}</p>
-        <p class="">By {{projo.profile}}</p>
-        <p> <strong>{{projo.date}}</strong></p>
-    </div>
-{% endfor %}
-    <div class="row">
-        <div class="col-md-2"></div>
-          <div class="col-md-8">
-            <div>
-              <p class="">Solutions Offered <i class="far fa-comments"></i></p>
-              <hr>
-              {%if solutions%}
-              {%for solution in solutions%}
-              <p style="margin-top:5%"> <i class="fas fa-quote-left"></i> {{solution.solution}} <i class="fas fa-quote-right"></i></p>
-              <i>By: {{solution.user}}</i>
-              <br>
-              {%endfor%}
-              {%else%}
-              <p class="alert alert-info">Be the 1st to offer a Solution</p>
-              {%endif%}
+<div class="container-fluid">
+    <div class="jumbotron"style="margin-top: 7%">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="https://weddingstorieskenya.com/wp-content/uploads/2018/10/carving-decoration-design-262023.jpg" alt="" style="width:140%">
             </div>
-            <br><br>
+            <div class="col-md-9">
+                <h2 class="headingstyles" style="font-size:10ex">Your Opinion Counts!</h2>
+                <br>
+                <p class="heading" style="text-align:center; font-size: 5ex">Help out another bride figure it out!</p>
+                <p style="text-align:center">What would be your solution to this?</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <h1 class="headingstyles" style="font-size: 5ex;text-decoration: underline">Question <i class="far fa-question-circle"></i></h1>
+            <div>
+                <p class="heading">{{projo.title}}</p>
+                <p >{{projo.description}}</p>
+                <p style="float:right">By {{projo.profile}}</p>
+                <p> <strong>{{projo.date}}</strong></p>
+            </div>
+            <hr>
+            <br>
+            <h1 class="heading" style="font-size: 5ex;">Offer a Solution</h1>
             {%if user.is_authenticated%}
             {%for proj in post%}
             <form class="" action="/solution/{{proj.id}}/" method="post">
-              {%csrf_token%}
-              {% bootstrap_form form%}
-              <button class="btn btn-outline-default" type="submit" name="button">Add a Solution</button>
+                {%csrf_token%}
+                {% bootstrap_form form%}
+                <button class="btn btn-outline-default" type="submit" name="button">Add a Solution</button>
             </form>
             {%endfor%}
             {%else%}
             <a href="/accounts/login/"><button class="btn btn-outline-default" type="submit" name="button">Sign in To Contribute</button></a>
             {%endif%}
-          </div>
-    
-          <div class="col-md-2"></div>
-      </div>
+
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <p class="headingstyles" style="font-size: 5ex;text-decoration: underline">Solutions Offered <i class="far fa-comments"></i></p>
+            <hr>
+            {%if solutions%}
+            {%for solution in solutions%}
+            <div style="padding:1%">
+                <div class="card">
+                    <div style="margin:3%">
+                    <br>
+                    <p class="heading"> {{solution.solution}}</p>
+                    <hr>
+                    <p style="float:right">{{solution.date}}</p>
+                    <p>By:{{solution.user}}</p>                
+                </div>
+            </div>
+            </div>
+            {%endfor%}
+            {%else%}
+            <p class="alert alert-info">Be the 1st to offer a Solution</p>
+            {%endif%}
+        </div>
     </div>
+</div>
+
+{% endfor %}
+
 
 {% endblock %}

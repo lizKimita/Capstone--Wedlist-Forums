@@ -21,6 +21,7 @@
           <p>{{post.title}}</p>
           <hr>
           <p> {{post.description}}</p>
+          <a class="btn btn-outline-default btn-lg" href="{% url 'solution' post.pk%}">view</a>
           
           <p style="float:right">{{post.date}}</p>
             <!-- <p>By:{{post.contact_person}}</p> -->

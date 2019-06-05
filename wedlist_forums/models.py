@@ -91,6 +91,9 @@ class Solutions(models.Model):
     def __str__(self):
         return self.solution
 
+    class Meta:
+        ordering = ['-id']
+
 class Tips(models.Model):
     title = models.CharField(max_length = 30)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
