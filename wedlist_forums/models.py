@@ -49,10 +49,8 @@ class Profile(models.Model):
 
 class Posts(models.Model):
     title = models.CharField(max_length = 30)
-    post_image = models.ImageField(upload_to = 'images/', blank=True)
     description = models.TextField(blank= True)
     profile = models.ForeignKey(User, on_delete = models.CASCADE, null=True)
-    status = models.ForeignKey(Status, on_delete = models.CASCADE, null=True)
     date = models.DateField(auto_now_add=True)
     poster_id = models.IntegerField(default=0)
 
