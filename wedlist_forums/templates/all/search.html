@@ -1,36 +1,41 @@
 {%extends 'all/base.html'%} 
 {% block content %}
 
-<div class="container-fluid" style="margin-top:7%">
-    <div class="jumbotron" style="background-color:rgba(95, 158, 160, 0.575)">
-        <img src="https://cdn.pixabay.com/photo/2017/02/06/11/49/city-2042634__340.png" alt="" style="width: 100%; margin-top: -150px">
-    {% if posts%}
-    <h2 class="slogan" style="margin-top: -120px; text-align: center">Found {{ posts|length }} posts that match "{{message}}"</h2>
-    {% else %}
-    <h2 class="slogan" style="margin-top: -120px; text-align: center">Found 0 posts that matched "{{message}}"</h2>
-    {% endif %}
-  </div>
+
+<div class="container-fluid">
+    <div class="jumbotron"style="margin-top: 7%">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="https://weddingstorieskenya.com/wp-content/uploads/elementor/thumbs/beautiful-bouquet-bridal-313707-o0sm9g69pxb9q1wiys09ir88niegdngcr70v7x7qs8.jpg" alt="" style="width:140%">
+            </div>
+            <div class="col-md-9">
+                <p class="headingstyles" style="font-size:7ex">Looking for a specific post?</p>
+                {% if posts%}
+                    <h2 style="text-align: center">Found {{ posts|length }} posts that match "{{message}}"</h2>
+                {% else %}
+                    <h2 style="text-align: center">Found 0 posts that matched "{{message}}"</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <hr>
 </div>
-<div class="container" style="padding-top:3%">
+<div class="container" style="padding-top:2%">
   {% if posts %}
     {% for post in posts %}
     <div class="col-md-4" style="padding:1%">
         <div class="card border border-info" id="borderid">
-      <div style="margin:2%">
-          <br>
-          <p>{{post.title}}</p>
-          <hr>
-          <p> {{post.description}}</p>
-          <a class="btn btn-outline-default btn-lg" href="{% url 'solution' post.pk%}">view</a>
-          
-          <p style="float:right">{{post.date}}</p>
-            <!-- <p>By:{{post.contact_person}}</p> -->
-      </div>
+            <div style="margin:3%">
+                <br>
+                <p style="float:right">By:{{post.profile}}</p>
+                <p>{{post.title}}</p>
+                <hr>
+                <a class="btn btn-outline-default btn-lg" href="{% url 'solution' post.pk%}">View Details</a>
+                <p style="float:right">{{post.date}}</p>
+            </div>
   </div>
 </div>
     {% endfor %}
   {% endif %}
-  
-
 </div>
 {% endblock %}
