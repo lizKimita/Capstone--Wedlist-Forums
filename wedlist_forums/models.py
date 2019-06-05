@@ -80,3 +80,12 @@ class Posts(models.Model):
 
     class Meta:
         ordering = ['-id']
+
+
+class Solutions(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    solution=models.TextField(max_length=150)
+    post_id=models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.solution

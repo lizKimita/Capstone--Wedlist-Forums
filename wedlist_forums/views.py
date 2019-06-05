@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from rest_framework.response import Response
-from .forms import NewPostForm, NewProfileForm
-from .models import Posts, Profile, Status
+from .forms import NewPostForm, NewProfileForm, NewSolutionsForm
+from .models import Posts, Profile, Status, Solutions
 
 
 # Create your views here.
@@ -81,3 +81,25 @@ def search_results(request):
     else:
         message = "You haven't searched for any posts yet!"
         return render (request, 'all/search.html', {"message": message})
+
+def solution(request,id):
+    post = Posts.objects.filter(id=id)
+    current_user = request.user
+
+    if request.method=='POST':
+        form = NewSolutionsForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = request.user
+            form.post_id = id
+            form.save()
+            return redirect('solution',id)
+    else:
+        form=NewSolutionsForm()
+
+    try:
+        user_solution=Solutions.objects.filter(post_id=id)
+    except Exception as e:
+        raise Http404()
+   
+    return render(request, 'all/solution.html',{'post':post, 'current_user': current_user,  'form':form, 'solutions':user_solution})

@@ -1,4 +1,4 @@
-from .models import Status,Profile,Posts
+from .models import Status,Profile,Posts, Solutions
 from django import forms
 
 class NewPostForm(forms.ModelForm):
@@ -12,3 +12,7 @@ class NewProfileForm(forms.ModelForm):
         model = Profile
         exclude = ['user', 'userId']
 
+class NewSolutionsForm(forms.ModelForm):
+    class Meta:
+        model = Solutions
+        exclude = ['post_id', 'user']
