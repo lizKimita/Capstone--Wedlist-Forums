@@ -1,35 +1,38 @@
 
 <nav class="navbar sticky-top navbar-expand-lg navbar-fixed-top navbar-dark stylish-color">
     <div class="container-fluid">
-      <ul class="navbar-nav mr-auto">
-          <li class="nav-item active" style="margin-right:19%">
-            <a href="/"><i class="fas fa-home"></i></a> 
-          </li>
-      </ul>
-      <a class="navbar-brand headstyle" style="color:white; margin-left: .8%; font-size: 230%" href="/">Wedlist Forums</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-     
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <a class="navbar-brand" href="/"><img src="https://weddingstorieskenya.com/wp-content/uploads/2018/10/logo-2-e1540489991521.png" alt="" style="height:250%; margin-top: -40%"></a> 
+    <a class="navbar-brand headstyle" style="color:white;font-size: 200%" href="/">Wedlist Forums</a>
+    {% if user.is_authenticated %}
+    <a class="navbar-brand" style="color:white" href="/"></i>Recommendations</a>
+    {% endif %}
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 150px">
         {% if user.is_authenticated %}
-          {%if profile %}
-        <form class="form-inline mr-auto" role="search" action="">
+        <form class="form-inline mr-auto" role="search" action="{% url 'search_results' %}">
           <div class="md-form my-0">
-            <input class="form-control" type="text" placeholder="Search Post" aria-label="Search" name= "business">
+            <input class="form-control" type="text" placeholder="Search Post" aria-label="Search" name= "post">
           </div>
         </form>
-          {% endif %}
         {% endif %}
       </div>
-      
-      
-      <div class="col-sm-4 col-md-4">
-        </div>
        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           
       <ul class="navbar-nav mr-auto">
-       
+            {% if user.is_authenticated %}
+        <li class="dropdown">
+            <a class="navbar-brand" style="color:white" href="" data-toggle="dropdown" role="button"></i>Forum Topics</a>
+          <ul class="dropdown-menu" role="menu">
+          <li>
+            <a style="font-size:15px;" href=""> Wedding jitters</a>
+          </li>
+          <li>
+            <a style="font-size:15px;" href=""> Vendors related</a>
+          </li>
+
+          </ul>
+          
+        </li>
+        {% endif %}
               {% if user.is_authenticated %}
                 <li class="dropdown">
                         <a class="nav-link" href="" data-toggle="dropdown" role="button"><img src="https://image.flaticon.com/icons/png/128/118/118781.png" alt="" style="width:30px;height:30px;"></i></a>
@@ -51,7 +54,7 @@
 
               {% endif %}
               <li style="padding-left:10%" >
-                <a style="font-size:10px;font-weight: 600" class='btn btn-default' href="{%url 'new-post'%}">SUBMIT A POST</a>
+                <a style="font-size:10px;font-weight: 600" class='btn btn-outline-default' href="{%url 'new-post'%}">SUBMIT A POST</a>
             </li>
             
         </ul>

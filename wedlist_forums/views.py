@@ -71,3 +71,13 @@ def profile(request):
 
     return render(request,'profile.html',{ 'profile':profile,'posts':posts,'current_user':current_user})
 
+def search_results(request):
+    if 'post' in request.GET and request.GET ["post"]:
+        search_term = request.GET.get("post")
+        searched_posts = Posts.search_by_title(search_term)
+        message = f'{search_term}'
+
+        return render(request, 'all/search.html', {"message":message, "posts":searched_posts})
+    else:
+        message = "You haven't searched for any posts yet!"
+        return render (request, 'all/search.html', {"message": message})
