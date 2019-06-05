@@ -5,4 +5,22 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    border-radius: 50%;
+    width: 120%;
+    height: 200%;
+}
+.homejumbo{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.fa-thumbs-up{
+    font-size: 150%;
+}
+.fa-thumbs-down{
+    font-size: 150%;
+}
+.headingstyles{
+    font-family: 'Cookie', cursive;
+    text-align: center
 }
