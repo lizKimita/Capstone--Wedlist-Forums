@@ -30,3 +30,9 @@
     font-family: 'Cookie', cursive;
     text-decoration: underline;
 }
+.profilepic{
+    border-radius: 50%;
+    max-width: 80%;
+    width: 90%;
+    margin-left: 30%;
+}
