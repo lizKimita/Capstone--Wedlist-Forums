@@ -1,36 +1,42 @@
 {%extends "registration/base.html"%}
 {% load bootstrap3 %}
 {% block content %}
-<div class="container">
-    <!-- Empty div -->
-    <div class="imglogin" style="padding-top: 10ch">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlBysJfCrVHzScG_Ml2OaaSJrtI9ujxncMzUE8jztJ26tU0la4KQ" alt="">
-    </div>
-    <div class="row">
-        <div style="padding-top:5ch; width: 50%;margin: auto;">
-      <div class="panel panel-default">
-        <div class="panel-body"  style="background-color:rgba(43, 124, 124, 0.87)">
-        <h3 class="headingstyles" style="text-align:center; font-size:300%; text-decoration: underline">Wedlist Forums</h3>
-          <form  action="/accounts/login/" method="post">
-            {% csrf_token %}
-            {% bootstrap_form form%}
-            <div class="form-group">
-              <a href="{%url 'home'%}"><input type="submit" class="btn btn-default" value="Login"></a>
-            </div>
+<div class="container-fluid" style="padding-top: 10ch">
+  <div class="well" style="padding-top: 1ch">
+      <h1 class="headinglogin">Wedlist Forums</h1>
+      <hr>
+      <div class="row">
+          <div class="col-md-6">
+              <div class="imglogin" >
+                  <img src="https://weddingstorieskenya.com/wp-content/uploads/2018/10/bride-and-groom-3183112_1920.jpg" alt="" style="height:50ex">
+              </div>
           </div>
-        </div>
+       <div class="col-md-6">
           <div class="panel panel-default">
             <div class="panel-body">
-            <small class="muted">
-                Don't have an account?<a style="font-size:15px;" href="/accounts/register"> Sign Up Here</a>
-            </small>
-            <input type="hidden" name="next" value="{{next}}">
-          </div>
-          </form>
-        </div>
-    </div>
-    <!-- empty div -->
+            <h3 class="headingstyles" style="text-align:center; font-size:300%; text-decoration: underline">Login</h3>
+              <form  action="/accounts/login/" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form%}
+                <div class="form-group">
+                  <a href="{%url 'home'%}"><input type="submit" class="btn btn-outline-default" value="Login"></a>
+                </div>
+              </div>
+            </div>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                <small class="muted">
+                    Don't have an account?<a style="font-size:15px;" href="/accounts/register"> Sign Up Here</a>
+                </small>
+                <input type="hidden" name="next" value="{{next}}">
+              </div>
+              </form>
+            </div>
+       </div>
+      </div>
   </div>
+
+
 </div>
 
 {% endblock %}
