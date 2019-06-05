@@ -33,6 +33,7 @@
     <div class="card-body">
         <div class="row">
             {% for post in posts %}
+                {% if posts %}
             <div class="col-md-4" style="padding:1%">
               <div class="card">
                 <p>{{post.title}}</p>
@@ -43,6 +44,9 @@
                 </div>
               </div>
             </div>
+            {% else %}
+            <p>You haven't offered any tips yet!</p>
+                {% endif %}
             {% endfor%}
             {% for tip in tips %}
                 {% if tips %}
