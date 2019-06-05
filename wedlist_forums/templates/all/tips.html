@@ -2,7 +2,23 @@
 {% load bootstrap3 %}
 
 {% block content %}
-<div class="container" style="margin-top: 10%">
+<div class="container-fluid">
+<div class="jumbotron"style="margin-top: 7%">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="https://weddingstorieskenya.com/wp-content/uploads/2018/10/shoes-634525_1280.jpg" alt="" style="width:140%">
+        </div>
+        <div class="col-md-9">
+            <h2 class="headingstyles" style="font-size:10ex">What do you wish you knew?</h2>
+            <br>
+            <p style="text-align:center">Offer a Tip or give Advice.</p>
+           <p style="text-align:center">Don't forget to upvote or downvote on the other offered tips!</p>
+        </div>
+    </div>
+</div>
+<hr>
+</div>
+<div class="container">
     <div class="row">
         <div class="col-md-5">
             <h1 class="headingstyles" style="font-size: 7ex;">Offer a Tip/ Advice</h1>
@@ -26,7 +42,7 @@
                 <div class="card">
                     <div style="margin:3%">
                     <br>
-                    <p> <strong>{{tip.title}}</strong></p>
+                    <p class="heading"> {{tip.title}}</p>
                     <hr>
                     <p>{{tip.tips}}</p>
                     <p style="float:right">{{tip.date}}</p>

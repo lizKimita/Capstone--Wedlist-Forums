@@ -22,5 +22,11 @@
 }
 .headingstyles{
     font-family: 'Cookie', cursive;
-    text-align: center
+    text-align: center;
+    color: teal;
+}
+.heading{
+    font-size: 230%;
+    font-family: 'Cookie', cursive;
+    text-decoration: underline;
 }
