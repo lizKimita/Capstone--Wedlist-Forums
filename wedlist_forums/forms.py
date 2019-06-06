@@ -26,3 +26,8 @@ class NewvotesForm(forms.ModelForm):
     class Meta:
         model = Tips
         exclude = ['upvote', 'downvote', 'user', 'title', 'tipper_id', 'tips','date']
+
+class NewdownvoteForm(forms.ModelForm):
+    class Meta:
+        model = Tips
+        exclude = ['upvote', 'downvote', 'user', 'title', 'tipper_id', 'tips','date']

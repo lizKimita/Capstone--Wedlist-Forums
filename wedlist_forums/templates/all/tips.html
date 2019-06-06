@@ -51,9 +51,9 @@
                         <i style="float:right" >
                         <form class="" action="" method="post">
                             {%csrf_token%}
-                            <input type="hidden" name="like" value="{{tip.id}}">
+                            <input type="hidden" name="dislike" value="{{tip.id}}">
                             <button type="submit" name="button"><i class="fas fa-thumbs-down"></i></button>
-                            {{tip.upvote}} 
+                            {{tip.downvote}} 
                         </form></i>
                         <i><form class="" action="" method="post">
                             {%csrf_token%}
