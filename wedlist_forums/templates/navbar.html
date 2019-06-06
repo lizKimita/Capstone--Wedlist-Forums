@@ -17,22 +17,7 @@
       </div>
        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           
-      <ul class="navbar-nav mr-auto">
-            {% if user.is_authenticated %}
-        <li class="dropdown">
-            <a class="navbar-brand" style="color:white" href="" data-toggle="dropdown" role="button"></i>Forum Topics</a>
-          <ul class="dropdown-menu" role="menu">
-          <li>
-            <a style="font-size:15px;" href=""> Wedding jitters</a>
-          </li>
-          <li>
-            <a style="font-size:15px;" href=""> Vendors related</a>
-          </li>
-
-          </ul>
-          
-        </li>
-        {% endif %}
+      <ul class="navbar-nav mr-auto" style="margin-left: 150px">
               {% if user.is_authenticated %}
                 <li class="dropdown">
                         <a class="nav-link" href="" data-toggle="dropdown" role="button"><img src="https://image.flaticon.com/icons/png/128/118/118781.png" alt="" style="width:30px;height:30px;"></i></a>
@@ -56,7 +41,6 @@
               <li style="padding-left:10%" >
                 <a style="font-size:10px;font-weight: 600" class='btn btn-outline-default' href="{%url 'new-post'%}">SUBMIT A POST</a>
             </li>
-            
         </ul>
       </div>
   

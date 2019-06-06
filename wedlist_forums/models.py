@@ -55,6 +55,9 @@ class Posts(models.Model):
     poster_id = models.IntegerField(default=0)
 
 
+    def __str__(self):
+        return self.title
+
     def save_post(self):
         self.save()
 
@@ -82,7 +85,7 @@ class Posts(models.Model):
 
 class Solutions(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    solution=models.TextField(max_length=150)
+    solution=models.TextField(max_length=650)
     post_id=models.IntegerField(default=0)
     date = models.DateField(auto_now_add=True)
 
@@ -95,7 +98,7 @@ class Solutions(models.Model):
 class Tips(models.Model):
     title = models.CharField(max_length = 30)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    tips=models.TextField(max_length=150)
+    tips=models.TextField(max_length=650)
     tipper_id = models.IntegerField(default=0)
     date = models.DateField(auto_now_add=True)
     upvote=models.IntegerField(default=0)
@@ -103,7 +106,7 @@ class Tips(models.Model):
 
 
     def __str__(self):
-        return self.tips
+        return self.title
 
     def save_tip(self):
         self.save()

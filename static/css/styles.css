@@ -46,5 +46,7 @@
     font-family: 'Cookie', cursive;
     text-decoration: underline;
     text-align: center;
-
+}
+.profmessage{
+    font-size: 2em;
 }
