@@ -48,12 +48,24 @@
                     <p style="float:right">{{tip.date}}</p>
                     <p>By: {{tip.user}}</p>
                     <div class="card-footer">
-                        <i style="float:right" class="fas fa-thumbs-up"></i>
-                        <i class="fas fa-thumbs-down"></i>
+                        <i style="float:right" >
+                        <form class="" action="" method="post">
+                            {%csrf_token%}
+                            <input type="hidden" name="like" value="{{tip.id}}">
+                            <button type="submit" name="button"><i class="fas fa-thumbs-down"></i></button>
+                            {{tip.upvote}} 
+                        </form></i>
+                        <i><form class="" action="" method="post">
+                            {%csrf_token%}
+                            <input type="hidden" name="like" value="{{tip.id}}">
+                            <button type="submit" name="button"><i class="fas fa-thumbs-up"></i></button>
+                            {{tip.upvote}} 
+                          </form></i>
                     </div>                  
                 </div>
             </div>
             </div>
+      
             {%endfor%}
             {%else%}
             <p class="alert alert-info">Be the 1st to offer a Tip/Advice</p>

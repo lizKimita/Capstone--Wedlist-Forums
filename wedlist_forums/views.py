@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from rest_framework.response import Response
-from .forms import NewPostForm, NewProfileForm, NewSolutionsForm, NewTipsForm
+from .forms import NewPostForm, NewProfileForm, NewSolutionsForm, NewTipsForm,NewvotesForm
 from .models import Posts, Profile, Status, Solutions,Tips
 
 
@@ -110,6 +110,32 @@ def solution(request,id):
 def tips(request):
     tips = Tips.get_tips()
     current_user = request.user
+    try:
+        pass
+    except Exception as e:
+        raise  Http404()
+    vote = request.POST.get("like","")
+
+
+    if request.method=='POST':
+        form=NewvotesForm(request.POST)
+        vote = request.POST.get("like","")
+        if vote:
+
+            like=int(vote)
+            if form.is_valid:
+                upvote=form.save(commit=False)
+                
+
+                single = Tips.objects.filter(id = vote)
+                count=0
+                for i in single:
+                    count+=i.upvote
+                total_upvotes=count+1
+                Tips.objects.filter(id=vote).update(upvote=total_upvotes)
+                return redirect('tips')
+    else:
+        forms=NewvotesForm()
 
     if request.method == 'POST':
         form = NewTipsForm(request.POST)
@@ -123,5 +149,5 @@ def tips(request):
     else:
         form = NewTipsForm()
 
-    return render(request, 'all/tips.html', {"form": form, "tips":tips})
+    return render(request, 'all/tips.html', {"form": form, "tips":tips, })
 

@@ -98,6 +98,8 @@ class Tips(models.Model):
     tips=models.TextField(max_length=150)
     tipper_id = models.IntegerField(default=0)
     date = models.DateField(auto_now_add=True)
+    upvote=models.IntegerField(default=0)
+    downvote=models.IntegerField(default=0)
 
 
     def __str__(self):
@@ -126,3 +128,5 @@ class Tips(models.Model):
 
     class Meta:
         ordering = ['-id']
+
+

@@ -20,4 +20,9 @@ class NewSolutionsForm(forms.ModelForm):
 class NewTipsForm(forms.ModelForm):
     class Meta:
         model = Tips
-        exclude = ['user', 'date', 'tipper_id']
+        exclude = ['user', 'date', 'tipper_id', 'upvote', 'downvote']
+
+class NewvotesForm(forms.ModelForm):
+    class Meta:
+        model = Tips
+        exclude = ['upvote', 'downvote', 'user', 'title', 'tipper_id', 'tips','date']
